@@ -3,10 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link href="main.css" rel="stylesheet"/>
         <title>Blank App</title>
     </head>
     <body>
-        <input type="button" value="Кнопка" style="width: 100%; height: 100px">
+        <div id="app">
+            <h2>{{name}}</h2>
+            <label>Имя:</label>
+            <input type="text" v-model="name">
+            <br>
+            <label>Значение checkbox: {{checked}}</label>
+            <input type="checkbox" v-model="checked">
+        </div>
+
         <script type="text/javascript" src="cordova.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="app.js"></script>
     </body>
 </html>
