@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html style="background-color:rgb(129, 199, 129)">
+    <head >
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <link href="main.css" rel="stylesheet"/>
@@ -8,12 +8,19 @@
     </head>
     <body>
         <div id="app">
-            <h2>{{name}}</h2>
-            <label>Имя:</label>
-            <input type="text" v-model="name">
-            <br>
-            <label>Значение checkbox: {{checked}}</label>
-            <input type="checkbox" v-model="checked">
+            <input type="text" @keyup.enter="addTask" v-model="currentTask">
+            <ul>
+                <li v-for="task in tasks" style="font-size: 25px"
+                :class="{'strike' : task.isCompleted}">
+                <input type="text" v-if="task.isEditing" @keyup.enter="editTask(task.text)" v-model="editValue">
+                <span
+                v-else
+                @click="task.isCompleted = !task.isCompleted" >{{task.text}}</span>
+                    <button style="border-radius: 20px" @click="removeTask(task.text)">x</button>
+                    <button @click="changeEditing(task.text)">*</button>
+                </li>
+            </ul>
+
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
